@@ -27,6 +27,7 @@
                     <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Administrator</option>
                     <option value="kepala_dusun" {{ old('role', $user->role) == 'kepala_dusun' ? 'selected' : '' }}>Kepala Dusun</option>
                     <option value="kepala_desa" {{ old('role', $user->role) == 'kepala_desa' ? 'selected' : '' }}>Kepala Desa</option>
+                    <option value="bpd" {{ old('role', $user->role) == 'bpd' ? 'selected' : '' }}>BPD</option>
                 </select>
                 @error('role') <span class="text-xs text-red-600">{{ $message }}</span> @enderror
             </div>

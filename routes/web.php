@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
 
     // ─── Hasil Ranking & Penilaian (read-only) — semua role kecuali aksi ─────
     Route::get('/topsis', [TopsisController::class, 'index'])->name('topsis.index');
+    Route::get('/topsis/cetak', [TopsisController::class, 'cetakPdf'])->name('topsis.cetak');
 
     // ─── WARGA: semua bisa lihat index ───────────────────────────────────────
     Route::get('/warga',            [WargaController::class, 'index']  )->name('warga.index');

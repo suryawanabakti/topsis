@@ -27,6 +27,7 @@
                     <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Administrator</option>
                     <option value="kepala_dusun" {{ old('role') == 'kepala_dusun' ? 'selected' : '' }}>Kepala Dusun</option>
                     <option value="kepala_desa" {{ old('role') == 'kepala_desa' ? 'selected' : '' }}>Kepala Desa</option>
+                    <option value="bpd" {{ old('role') == 'bpd' ? 'selected' : '' }}>BPD</option>
                 </select>
                 @error('role') <span class="text-xs text-red-600">{{ $message }}</span> @enderror
             </div>
@@ -44,6 +45,7 @@
                 <p>🔴 <b>Administrator</b>: Akses penuh ke semua fitur (CRUD semua data & manajemen user)</p>
                 <p>🔵 <b>Kepala Dusun</b>: Mengelola data warga (CRUD), melihat penilaian & hasil ranking</p>
                 <p>🟢 <b>Kepala Desa</b>: Hanya dapat melihat data warga, kriteria, & hasil ranking</p>
+                <p>🟡 <b>BPD</b>: Hanya dapat melihat data warga, kriteria, & hasil ranking</p>
             </div>
             <div class="pt-4 flex justify-end space-x-3 border-t border-gray-200">
                 <a href="{{ route('users.index') }}" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm hover:bg-gray-200">Batal</a>

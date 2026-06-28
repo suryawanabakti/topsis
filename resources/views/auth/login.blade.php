@@ -10,11 +10,10 @@
         body { font-family: 'Inter', sans-serif; }
 
         .bg-pattern {
-            background-color: #1e1b4b;
-            background-image:
-                radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.3) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.25) 0%, transparent 50%),
-                radial-gradient(ellipse at 60% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('{{ asset('background.png') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .glass-card {

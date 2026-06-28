@@ -36,6 +36,7 @@ class User extends Authenticatable
     public function isAdmin(): bool       { return $this->role === 'admin'; }
     public function isKepDusun(): bool    { return $this->role === 'kepala_dusun'; }
     public function isKepDesa(): bool     { return $this->role === 'kepala_desa'; }
+    public function isBpd(): bool         { return $this->role === 'bpd'; }
 
     public function roleName(): string
     {
@@ -43,6 +44,7 @@ class User extends Authenticatable
             'admin'         => 'Administrator',
             'kepala_dusun'  => 'Kepala Dusun',
             'kepala_desa'   => 'Kepala Desa',
+            'bpd'           => 'BPD',
             default         => ucfirst($this->role),
         };
     }

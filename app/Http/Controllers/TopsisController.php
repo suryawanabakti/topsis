@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Kriteria;
 use App\Models\Warga;
 
@@ -10,16 +10,37 @@ class TopsisController extends Controller
 {
     public function index()
     {
+        $data = $this->computeTopsis();
+
+        if (isset($data['error'])) {
+            return view('topsis.index', ['error' => $data['error']]);
+        }
+
+        return view('topsis.index', $data);
+    }
+
+    public function cetakPdf()
+    {
+        $data = $this->computeTopsis();
+
+        if (isset($data['error'])) {
+            return back()->with('error', $data['error']);
+        }
+
+        $pdf = Pdf::loadView('topsis.cetak', $data);
+        return $pdf->download('laporan-ranking-topsis.pdf');
+    }
+
+    private function computeTopsis(): array
+    {
         $kriterias = Kriteria::orderBy('kode', 'asc')->get();
         $wargas = Warga::with('penilaians.subKriteria')->get();
 
         if ($kriterias->isEmpty() || $wargas->isEmpty()) {
-            return view('topsis.index', ['error' => 'Data Kriteria atau Warga masih kosong.']);
+            return ['error' => 'Data Kriteria atau Warga masih kosong.'];
         }
 
-        // =========================
         // 1. MATRIX KEPUTUSAN (X)
-        // =========================
         $matrixX = [];
         foreach ($wargas as $warga) {
             foreach ($kriterias as $kriteria) {
@@ -35,9 +56,7 @@ class TopsisController extends Controller
             }
         }
 
-        // =========================
         // 2. NORMALISASI PEMBAGI
-        // =========================
         $pembagi = [];
         foreach ($kriterias as $kriteria) {
             $sumSq = 0;
@@ -49,9 +68,7 @@ class TopsisController extends Controller
             $pembagi[$kriteria->id] = sqrt($sumSq);
         }
 
-        // =========================
         // 3. MATRIX NORMALISASI (R)
-        // =========================
         $matrixR = [];
         foreach ($wargas as $warga) {
             foreach ($kriterias as $kriteria) {
@@ -63,9 +80,7 @@ class TopsisController extends Controller
             }
         }
 
-        // =========================
         // 4. NORMALISASI BOBOT
-        // =========================
         $totalBobot = $kriterias->sum('bobot');
 
         $bobotNormal = [];
@@ -75,9 +90,7 @@ class TopsisController extends Controller
                 : $kriteria->bobot / $totalBobot;
         }
 
-        // =========================
         // 5. MATRIX TERBOBOT (Y)
-        // =========================
         $matrixY = [];
         foreach ($wargas as $warga) {
             foreach ($kriterias as $kriteria) {
@@ -86,9 +99,7 @@ class TopsisController extends Controller
             }
         }
 
-        // =========================
         // 6. SOLUSI IDEAL
-        // =========================
         $A_plus = [];
         $A_min = [];
 
@@ -106,9 +117,7 @@ class TopsisController extends Controller
             }
         }
 
-        // =========================
         // 7. JARAK D+ DAN D-
-        // =========================
         $D_plus = [];
         $D_min = [];
 
@@ -129,9 +138,7 @@ class TopsisController extends Controller
             $D_min[$warga->id] = sqrt($sumMin);
         }
 
-        // =========================
         // 8. NILAI PREFERENSI (V)
-        // =========================
         $preferensi = [];
 
         foreach ($wargas as $warga) {
@@ -150,14 +157,12 @@ class TopsisController extends Controller
             ];
         }
 
-        // =========================
         // 9. RANKING
-        // =========================
         usort($preferensi, function ($a, $b) {
             return $b['V'] <=> $a['V'];
         });
 
-        return view('topsis.index', compact(
+        return compact(
             'kriterias',
             'wargas',
             'matrixX',
@@ -168,6 +173,6 @@ class TopsisController extends Controller
             'D_plus',
             'D_min',
             'preferensi'
-        ));
+        );
     }
 }
