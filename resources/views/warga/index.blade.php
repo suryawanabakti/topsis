@@ -22,6 +22,7 @@
                 <div>
                     <p class="font-semibold text-gray-900 text-sm">{{ $w->nama }}</p>
                     <p class="text-xs text-gray-500 mt-0.5">NIK: {{ $w->nik }}</p>
+                    <p class="text-xs text-gray-400 mt-0.5">{{ $w->alamat }}</p>
                 </div>
                 @if(Auth::user()->isAdmin() || Auth::user()->isKepDusun())
                 <div class="flex items-center space-x-3 flex-shrink-0 ml-2">
@@ -50,6 +51,7 @@
                 <tr>
                     <th class="px-6 py-3">NIK</th>
                     <th class="px-6 py-3">Nama</th>
+                    <th class="px-6 py-3">Alamat</th>
                     <th class="px-6 py-3">Jenis Kelamin</th>
                     <th class="px-6 py-3">Pekerjaan</th>
                     @if(Auth::user()->isAdmin() || Auth::user()->isKepDusun())
@@ -62,6 +64,7 @@
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4">{{ $w->nik }}</td>
                     <td class="px-6 py-4 font-medium text-gray-900">{{ $w->nama }}</td>
+                    <td class="px-6 py-4 text-gray-400 max-w-xs truncate">{{ $w->alamat }}</td>
                     <td class="px-6 py-4">{{ $w->jenis_kelamin == 'L' ? 'Laki-Laki' : 'Perempuan' }}</td>
                     <td class="px-6 py-4">{{ $w->pekerjaan }}</td>
                     @if(Auth::user()->isAdmin() || Auth::user()->isKepDusun())
@@ -77,7 +80,7 @@
                     @endif
                 </tr>
                 @empty
-                <tr><td colspan="5" class="px-6 py-6 text-center text-gray-400">Belum ada data warga.</td></tr>
+                <tr><td colspan="{{ Auth::user()->isAdmin() || Auth::user()->isKepDusun() ? 6 : 5 }}" class="px-6 py-6 text-center text-gray-400">Belum ada data warga.</td></tr>
                 @endforelse
             </tbody>
         </table>

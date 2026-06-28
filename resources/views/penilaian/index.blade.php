@@ -34,6 +34,14 @@
                         @endif
                     </div>
                 @endforeach
+                @if(Auth::user()->isAdmin())
+                <div class="pt-2">
+                    <a href="{{ route('penilaian.edit', $warga->id) }}" class="text-xs text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        Edit
+                    </a>
+                </div>
+                @endif
             </div>
         </div>
         @empty
@@ -52,6 +60,9 @@
                         <span class="text-gray-400 normal-case font-normal text-xs">{{ $k->nama_kriteria }}</span>
                     </th>
                     @endforeach
+                    @if(Auth::user()->isAdmin())
+                    <th class="px-6 py-3 border-b text-center">Aksi</th>
+                    @endif
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
@@ -72,10 +83,18 @@
                             @endif
                         </td>
                     @endforeach
+                    @if(Auth::user()->isAdmin())
+                    <td class="px-6 py-4 text-center">
+                        <a href="{{ route('penilaian.edit', $warga->id) }}" class="inline-flex items-center gap-1 text-indigo-600 hover:text-indigo-800 text-xs font-medium">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            Edit
+                        </a>
+                    </td>
+                    @endif
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="{{ $kriterias->count() + 1 }}" class="px-6 py-6 text-center text-gray-400">Belum ada data penilaian.</td>
+                    <td colspan="{{ $kriterias->count() + 1 + (Auth::user()->isAdmin() ? 1 : 0) }}" class="px-6 py-6 text-center text-gray-400">Belum ada data penilaian.</td>
                 </tr>
                 @endforelse
             </tbody>

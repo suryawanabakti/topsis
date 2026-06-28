@@ -53,9 +53,11 @@ Route::middleware('auth')->group(function () {
         // Sub Kriteria CRUD penuh
         Route::resource('sub_kriteria', SubKriteriaController::class);
 
-        // Penilaian CRUD (create/store)
-        Route::get ('/penilaian/create', [PenilaianController::class, 'create'])->name('penilaian.create');
-        Route::post('/penilaian',        [PenilaianController::class, 'store'] )->name('penilaian.store');
+        // Penilaian CRUD
+        Route::get ('/penilaian/create',        [PenilaianController::class, 'create'])->name('penilaian.create');
+        Route::post('/penilaian',               [PenilaianController::class, 'store'] )->name('penilaian.store');
+        Route::get ('/penilaian/{warga}/edit',  [PenilaianController::class, 'edit']  )->name('penilaian.edit');
+        Route::put ('/penilaian/{warga}',       [PenilaianController::class, 'update'])->name('penilaian.update');
 
         // Manajemen User
         Route::resource('users', UserController::class)->except(['show']);

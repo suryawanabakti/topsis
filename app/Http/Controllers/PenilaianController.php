@@ -23,6 +23,31 @@ class PenilaianController extends Controller
         return view('penilaian.create', compact('wargas', 'kriterias'));
     }
 
+    public function edit(Warga $warga)
+    {
+        $warga->load(['penilaians']);
+        $kriterias = Kriteria::with('subKriterias')->get();
+        return view('penilaian.edit', compact('warga', 'kriterias'));
+    }
+
+    public function update(Request $request, Warga $warga)
+    {
+        $penilaianData = $request->penilaian;
+
+        if($penilaianData) {
+            foreach($penilaianData as $kriteria_id => $sub_kriteria_id) {
+                $sub = \App\Models\SubKriteria::find($sub_kriteria_id);
+                if($sub) {
+                    Penilaian::updateOrCreate(
+                        ['warga_id' => $warga->id, 'kriteria_id' => $kriteria_id],
+                        ['sub_kriteria_id' => $sub_kriteria_id, 'nilai' => $sub->nilai]
+                    );
+                }
+            }
+        }
+        return redirect()->route('penilaian.index')->with('success', 'Penilaian updated successfully.');
+    }
+
     public function store(Request $request)
     {
         $warga_id = $request->warga_id;
