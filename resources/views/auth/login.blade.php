@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login — SPK TOPSIS Penerima BLT Desa Turungan Baji</title>
+    <title>Login — SISTEM PENDUKUNG KEPUTUSAN PENERIMA BANTUAN SOSIAL LANSUNG TUNAI TOPSIS Penerima BLT Desa Turungan Baji</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -50,7 +50,7 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
+        50% { transform: translateY(-12px); }
         }
         @keyframes float2 {
             0%, 100% { transform: translateY(0px); }
@@ -79,16 +79,14 @@
     <div class="absolute top-0 right-0 w-80 h-80 rounded-full border border-white/5 translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full border border-white/5 -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
 
-    <div class="w-full max-w-md z-10">
+    <div class="w-full max-w-lg z-10">
         <!-- Logo / Brand -->
         <div class="text-center mb-8 fade-up">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/40 mb-4">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                </svg>
+            <div class="inline-flex items-center justify-center mb-4">
+                <img src="{{ asset('logo.png') }}" alt="Logo" class="w-36 h-36 object-contain">
             </div>
             <p class="text-indigo-400 text-xs font-semibold tracking-widest uppercase mb-1">Desa Turungan Baji · Sinjai Barat</p>
-            <h1 class="text-2xl font-bold text-white tracking-tight">SPK Penerima BLT</h1>
+            <h1 class="text-3xl font-bold text-white tracking-tight">SISTEM PENDUKUNG KEPUTUSAN PENERIMA BANTUAN SOSIAL LANGSUNG TUNAI - DANA DESA</h1>
             <p class="text-indigo-300 text-sm mt-1">Bantuan Langsung Tunai — Metode TOPSIS</p>
         </div>
 
