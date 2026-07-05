@@ -37,9 +37,10 @@
             <!-- Sidebar -->
             <div id="sidebar"
                 class="sidebar fixed lg:static inset-y-0 left-0 z-30 flex flex-col w-64 bg-indigo-800 text-white shadow-xl transform -translate-x-full lg:translate-x-0">
-                <div class="flex items-center justify-center py-6 px-6 border-b border-indigo-700 flex-shrink-0">
-                    <img src="{{ asset('logo.png') }}" alt="SPK BLT Turungan Baji" class="h-32 object-contain">
-                    <button onclick="toggleSidebar()" class="lg:hidden absolute right-4 text-indigo-200 hover:text-white">
+                <div class="flex flex-col items-center justify-center py-4 px-6 border-b border-indigo-700 flex-shrink-0">
+                    <img src="{{ asset('logo.png') }}" alt="SPK BLT Turungan Baji" class="h-28 object-contain">
+                    <span class="mt-1 text-xs font-medium text-indigo-300">Turungan Baji</span>
+                    <button onclick="toggleSidebar()" class="lg:hidden absolute right-4 top-1/2 -translate-y-1/2 text-indigo-200 hover:text-white">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                             </path>
