@@ -85,9 +85,9 @@
             <div class="inline-flex items-center justify-center mb-4">
                 <img src="{{ asset('logo.png') }}" alt="Logo" class="w-36 h-36 object-contain">
             </div>
-            <p class="text-indigo-400 text-xs font-semibold tracking-widest uppercase mb-1">Desa Turungan Baji · Sinjai Barat</p>
-            <h1 class="text-3xl font-bold text-white tracking-tight">SISTEM PENDUKUNG KEPUTUSAN PENERIMA BANTUAN SOSIAL LANGSUNG TUNAI - DANA DESA</h1>
-            <p class="text-indigo-300 text-sm mt-1">Bantuan Langsung Tunai — Metode TOPSIS</p>
+            <p class="text-white text-xs font-bold tracking-widest uppercase mb-1">Desa Turungan Baji · Sinjai Barat</p>
+            <h1 class="text-2xl font-bold text-white tracking-tight">SISTEM PENDUKUNG KEPUTUSAN PENERIMA BANTUAN SOSIAL LANGSUNG TUNAI - DANA DESA</h1>
+            <p class="text-white text-sm mt-1">Bantuan Langsung Tunai — Metode TOPSIS</p>
         </div>
 
         <!-- Card -->

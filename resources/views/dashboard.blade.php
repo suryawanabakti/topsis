@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard — SISTEM PENDUKUNG KEPUTUSAN PENERIMA BANTUAN SOSIAL LANSUNG TUNAI Bantuan Langsung Tunai (BLT)')
+@section('title', 'Dashboard — SISTEM PENDUKUNG KEPUTUSAN PENERIMA BANTUAN SOSIAL LANSUNG TUNAI DANA DESA')
 
 @section('content')
 <div class="space-y-6">
@@ -11,8 +11,8 @@
                 <img src="{{ asset('logo.png') }}" alt="Logo" class="w-32 h-32 object-contain">
             </div>
             <div>
-                <p class="text-indigo-200 text-xs uppercase tracking-widest font-semibold">SISTEM PENDUKUNG KEPUTUSAN PENERIMA BANTUAN SOSIAL LANSUNG TUNAI Metode TOPSIS — Penetapan Penerima</p>
-                <h2 class="text-xl lg:text-2xl font-bold tracking-tight">Bantuan Langsung Tunai (BLT)</h2>
+                <p class="text-indigo-200 text-xs uppercase tracking-widest font-semibold">SISTEM PENDUKUNG KEPUTUSAN PENERIMA BANTUAN SOSIAL LANSUNG TUNAI - DANA DESA</p>
+                <h2 class="text-xl lg:text-2xl font-bold tracking-tight">BANTUAN SOSIAL LANGSUNG TUNAI - DANA DESA</h2>
                 <p class="text-indigo-300 text-sm">Desa Turungan Baji, Kec. Sinjai Barat, Kab. Sinjai</p>
             </div>
         </div>
@@ -56,7 +56,7 @@
 
     <!-- Quick Actions -->
     <div class="bg-white shadow-sm rounded-xl border border-gray-100 p-5">
-        <h3 class="text-base font-semibold text-gray-700 mb-2">Sistem Pendukung Keputusan (SISTEM PENDUKUNG KEPUTUSAN PENERIMA BANTUAN SOSIAL LANSUNG TUNAI) - Metode TOPSIS</h3>
+        <h3 class="text-base font-semibold text-gray-700 mb-2">SISTEM PENDUKUNG KEPUTUSAN PENERIMA BANTUAN SOSIAL LANSUNG TUNAI DANA DESA - Metode TOPSIS</h3>
         <p class="text-sm text-gray-500 mb-4">Gunakan menu di sidebar untuk mengelola data warga, kriteria, sub kriteria, dan penilaian. Setelah data lengkap, lihat hasil perankingan TOPSIS.</p>
         <a href="{{ route('topsis.index') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
